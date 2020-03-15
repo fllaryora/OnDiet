@@ -1,4 +1,4 @@
-package com.intecanar.ondiet.ui.share
+package com.intecanar.ondiet.ui.weight
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.intecanar.ondiet.R
 
-class ShareFragment : Fragment() {
+class WeightFragment : Fragment() {
 
-    private lateinit var shareViewModel: ShareViewModel
+    private lateinit var weightViewModelViewModel: WeightViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        shareViewModel =
-            ViewModelProviders.of(this).get(ShareViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_share, container, false)
-        val textView: TextView = root.findViewById(R.id.text_share)
-        shareViewModel.text.observe(this, Observer {
+        weightViewModelViewModel =
+            ViewModelProviders.of(this).get(WeightViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_weight, container, false)
+        val textView: TextView = root.findViewById(R.id.text_gallery)
+        weightViewModelViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

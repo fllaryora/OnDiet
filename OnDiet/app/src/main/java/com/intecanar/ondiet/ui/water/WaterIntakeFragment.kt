@@ -1,4 +1,4 @@
-package com.intecanar.ondiet.ui.slideshow
+package com.intecanar.ondiet.ui.water
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.intecanar.ondiet.R
 
-class SlideshowFragment : Fragment() {
+class WaterIntakeFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var waterIntakeViewModel: WaterIntakeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
+        waterIntakeViewModel =
+            ViewModelProviders.of(this).get(WaterIntakeViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_water_intake, container, false)
         val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(this, Observer {
+        waterIntakeViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

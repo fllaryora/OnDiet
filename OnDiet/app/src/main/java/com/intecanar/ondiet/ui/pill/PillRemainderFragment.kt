@@ -1,4 +1,4 @@
-package com.intecanar.ondiet.ui.send
+package com.intecanar.ondiet.ui.pill
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.intecanar.ondiet.R
 
-class SendFragment : Fragment() {
+class PillRemainderFragment : Fragment() {
 
-    private lateinit var sendViewModel: SendViewModel
+    private lateinit var pillRemainderViewModel: PillRemainderViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        sendViewModel =
-            ViewModelProviders.of(this).get(SendViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_send, container, false)
-        val textView: TextView = root.findViewById(R.id.text_send)
-        sendViewModel.text.observe(this, Observer {
+        pillRemainderViewModel =
+            ViewModelProviders.of(this).get(PillRemainderViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_pill_remainder, container, false)
+        val textView: TextView = root.findViewById(R.id.text_tools)
+        pillRemainderViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

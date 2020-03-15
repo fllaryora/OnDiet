@@ -12,32 +12,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.intecanar.ondiet.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_weighing"
+        android:name="com.intecanar.ondiet.ui.weight.WeightFragment"
+        android:label="@string/menu_weighing"
+        tools:layout="@layout/fragment_weight" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.intecanar.ondiet.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_water_intake"
+        android:name="com.intecanar.ondiet.ui.water.WaterIntakeFragment"
+        android:label="@string/menu_water_intake"
+        tools:layout="@layout/fragment_water_intake" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.intecanar.ondiet.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_pill_remainder"
+        android:name="com.intecanar.ondiet.ui.pill.PillRemainderFragment"
+        android:label="@string/menu_pill_remainder"
+        tools:layout="@layout/fragment_pill_remainder" />
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.intecanar.ondiet.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.intecanar.ondiet.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

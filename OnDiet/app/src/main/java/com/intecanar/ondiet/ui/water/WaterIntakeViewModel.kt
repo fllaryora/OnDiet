@@ -1,13 +1,13 @@
-package com.intecanar.ondiet.ui.send
+package com.intecanar.ondiet.ui.water
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SendViewModel : ViewModel() {
+class WaterIntakeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is send Fragment"
+        value = "This is slideshow Fragment"
     }
     val text: LiveData<String> = _text
 }

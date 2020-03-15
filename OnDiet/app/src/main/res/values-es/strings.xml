@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">A Dieta</string>
+    <string name="navigation_drawer_open">Navigation drawer Abierto</string>
+    <string name="navigation_drawer_close">Navigation drawer Cerrado</string>
+    <string name="nav_header_title">A Dieta</string>
+    <string name="nav_header_subtitle">Esta vez es la buena!</string>
+    <string name="nav_header_desc">Encabezado del Navegador</string>
+
+    <string name="menu_home">Pantalla Principal</string>
+    <string name="menu_weighing">Pesaje</string>
+    <string name="menu_water_intake">Ingesta de Agua</string>
+    <string name="menu_pill_remainder">Recordatorio para vitaminas</string>
+
+    <string name="weightInputFragmentLabel">Pantalla de ingreso de peso</string>
+
+    <string name="hint_weight">Por favor ingrese su peso.</string>
+    <string name="weight_input_label">Por favor ingrese el peso:</string>
+    <string name="weighing_date">Fecha de Pesaje:</string>
+    <string name="change_date">Cambiar Fecha</string>
+    <string name="add_weight_data">Ingresar Datos</string>
+    <string name="cancel">Cancelar</string>
+</resources>

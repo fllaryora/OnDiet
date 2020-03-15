@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_weighing"
+            android:icon="@drawable/ic_menu_weighing"
+            android:title="@string/menu_weighing" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_water_intake"
+            android:icon="@drawable/ic_menu_water_intake"
+            android:title="@string/menu_water_intake" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_pill_remainder"
+            android:icon="@drawable/ic_menu_pill_remainder"
+            android:title="@string/menu_pill_remainder" />
     </group>
 
-    <item android:title="Communicate">
+    <!--<item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
@@ -33,6 +33,6 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_send" />
         </menu>
-    </item>
+    </item>-->
 
 </menu>

@@ -1,16 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OnDiet</string>
+    <string name="app_name">On Diet</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">On Diet</string>
+    <string name="nav_header_subtitle">This time it\'s the good one!</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_weighing">Weighing</string>
+    <string name="menu_water_intake">>Water intake</string>
+    <string name="menu_pill_remainder">Pill\'s reminder</string>
+
+    <string name="weightInputFragmentLabel">Weighing Input Screen</string>
+
+    <string name="hint_weight">Please enter your weight.</string>
+    <string name="weight_input_label">Please enter your weight:</string>
+    <string name="weighing_date">Weighing date:</string>
+    <string name="change_date">Change Date</string>
+    <string name="add_weight_data">Add weight data</string>
+    <string name="cancel">Cancel</string>
 </resources>
