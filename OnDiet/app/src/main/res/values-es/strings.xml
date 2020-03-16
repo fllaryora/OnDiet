@@ -12,6 +12,10 @@
     <string name="menu_water_intake">Ingesta de Agua</string>
     <string name="menu_pill_remainder">Recordatorio para vitaminas</string>
 
+    <string name="menu_sub_title_weight">Registro del peso.</string>
+    <string name="menu_sub_title_water">Registro de ingesta de agua.</string>
+    <string name="menu_sub_title_pill">Recordatorio para vitaminas.</string>
+
     <string name="weightInputFragmentLabel">Pantalla de ingreso de peso</string>
 
     <string name="hint_weight">Por favor ingrese su peso.</string>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="main_icon_list">
+        <item>@drawable/ic_menu_weighing</item>
+        <item>@drawable/ic_menu_water_intake</item>
+        <item>@drawable/ic_menu_pill_remainder</item>
+    </integer-array>
+
+    <string-array name="main_title_list">
+        <item>@string/menu_weighing</item>
+        <item>@string/menu_water_intake</item>
+        <item>@string/menu_pill_remainder</item>
+    </string-array>
+
+    <string-array name="main_sub_title_list">
+        <item>@string/menu_sub_title_weight</item>
+        <item>@string/menu_sub_title_water</item>
+        <item>@string/menu_sub_title_pill</item>
+    </string-array>
+
+</resources>
