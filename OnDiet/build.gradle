@@ -22,7 +22,10 @@ allprojects {
         
     }
 }
-
+ext {
+    helloChartsVersion = '1.5.8'
+    timeLineVersion = '1.1.3'
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
