@@ -5,9 +5,9 @@
     <color name="colorPrimary">#c2261a</color>
     <color name="colorPrimaryDark">#951d14</color>
     <!-- Complementary list  -->
-    <color name="colorAccent">#1ac27a</color>
+    <color name="colorGreen">#1ac27a</color>
     <color name="colorBlue">#1a62c2</color>
-    <color name="colorOrange">#c25e1a</color>
+    <color name="colorAccent">#c25e1a</color>
     <color name="colorGray">#6e6e6e</color>
     <!-- android - black  -->
 

@@ -24,5 +24,6 @@
     <string name="change_date">Change Date</string>
     <string name="add_weight_data">Add weight data</string>
     <string name="cancel">Cancel</string>
+    <string name="menu_weight_input">Weight Input</string>
 
 </resources>

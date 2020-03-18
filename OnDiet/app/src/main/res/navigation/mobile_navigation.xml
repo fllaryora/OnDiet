@@ -29,4 +29,10 @@
         android:label="@string/menu_pill_remainder"
         tools:layout="@layout/fragment_pill_remainder" />
 
+    <fragment
+        android:id="@+id/nav_weight_input"
+        android:name="com.intecanar.ondiet.ui.input.weight.WeightInputFragment"
+        android:label="@string/menu_weight_input"
+        tools:layout="@layout/weight_input_fragment" />
+
 </navigation>
