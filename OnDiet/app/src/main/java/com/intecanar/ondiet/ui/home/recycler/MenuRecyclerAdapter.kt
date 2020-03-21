@@ -35,7 +35,6 @@ class MenuRecyclerAdapter (var itemList:List<AppSectionItem>):
     }
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): ViewHolder {
-        setOnItemClickListener(listener)
         val layoutInflater : LayoutInflater = LayoutInflater.from(parent.context)
         //viewType is loaded from getItemViewType or here..
         val view = layoutInflater.inflate(viewType, parent, false)

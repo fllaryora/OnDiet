@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.recyclerview.widget.RecyclerView
 import lecho.lib.hellocharts.view.LineChartView
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.intecanar.ondiet.R
 import com.intecanar.ondiet.ui.weight.recycler.timeline.TimeLineAdapter
+import com.intecanar.ondiet.ui.weight.recycler.timeline.TimeLineModel
 import lecho.lib.hellocharts.gesture.ZoomType
 import lecho.lib.hellocharts.listener.ViewportChangeListener
 import lecho.lib.hellocharts.model.Viewport
@@ -59,8 +61,13 @@ class WeightFragment : Fragment() {
 
         weightViewModelViewModel.timeLineList.observe(this, Observer {
             timeLine.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            timeLine.adapter = TimeLineAdapter(it)
-
+            val timeLineAdapter = TimeLineAdapter(it)
+            timeLineAdapter.setOnItemClickListener(object : TimeLineAdapter.OnItemClickListener {
+                override fun onClick(view: View, timeLineModel : TimeLineModel) {
+                        Toast.makeText(context, timeLineModel.message, Toast.LENGTH_LONG).show()
+                }
+            })
+            timeLine.adapter = timeLineAdapter
         })
 
         return root
