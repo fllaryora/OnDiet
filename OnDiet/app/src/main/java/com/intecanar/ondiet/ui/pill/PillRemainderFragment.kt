@@ -7,25 +7,32 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.intecanar.ondiet.R
 
 class PillRemainderFragment : Fragment() {
 
     private lateinit var pillRemainderViewModel: PillRemainderViewModel
 
+    private lateinit var textView: TextView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         pillRemainderViewModel =
-            ViewModelProviders.of(this).get(PillRemainderViewModel::class.java)
+            ViewModelProvider(this).get(PillRemainderViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_pill_remainder, container, false)
-        val textView: TextView = root.findViewById(R.id.text_tools)
-        pillRemainderViewModel.text.observe(this, Observer {
+
+        textView = root.findViewById(R.id.text_tools)
+
+        return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        pillRemainderViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        return root
     }
 }

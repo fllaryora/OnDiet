@@ -8,10 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.vipulasri.timelineview.TimelineView
 import com.intecanar.ondiet.R
-import java.time.format.DateTimeFormatter
+import com.intecanar.ondiet.data.entity.Weight
+import com.intecanar.ondiet.ui.util.TimeHelper
 
-class TimeLineAdapter ( var itemList: List<TimeLineModel> ):
+class TimeLineAdapter :
     RecyclerView.Adapter<TimeLineAdapter.TimeLineViewHolder>() {
+
+    var itemList: MutableList<Weight> = mutableListOf()
 
     class TimeLineViewHolder(itemView: View, viewType: Int) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.text_timeline_title)
@@ -22,15 +25,13 @@ class TimeLineAdapter ( var itemList: List<TimeLineModel> ):
         init{
             timeLine.initLine(viewType)
         }
-        companion object {
-            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("hh:mm a, dd-MMM-yyyy")
-        }
 
-        fun bind(timeLineModel : TimeLineModel, listener: OnItemClickListener){
-            title.text = timeLineModel.message
-            date.text = timeLineModel.date.format(formatter)
+        fun bind(weight : Weight, listener: OnItemClickListener){
+            title.text = itemView.context.resources.getString(
+                R.string.weight_timeline_label, weight.weight.toString())
+            date.text = weight.date.format(TimeHelper.formatter)
             trashBin.setOnClickListener {
-                listener.onClick(it, timeLineModel)
+                listener.onClick(it, weight)
             }
         }
 
@@ -48,7 +49,7 @@ class TimeLineAdapter ( var itemList: List<TimeLineModel> ):
     }
 
     override fun onBindViewHolder(holder: TimeLineViewHolder, position: Int) {
-        val timeItem :TimeLineModel = this.itemList[position]
+        val timeItem :Weight = this.itemList[position]
         holder.bind(timeItem, this.listener)
     }
 
@@ -63,10 +64,15 @@ class TimeLineAdapter ( var itemList: List<TimeLineModel> ):
     private lateinit var listener: OnItemClickListener
 
     interface OnItemClickListener {
-        fun onClick(view: View, timeLineModel: TimeLineModel)
+        fun onClick(view: View, weight: Weight)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         this.listener = listener
+    }
+
+    public fun setTimeLine( itemList: List<Weight> ){
+        this.itemList.addAll(itemList)
+        notifyDataSetChanged()
     }
 }

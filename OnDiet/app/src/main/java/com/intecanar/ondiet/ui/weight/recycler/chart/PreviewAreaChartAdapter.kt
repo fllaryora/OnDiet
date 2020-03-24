@@ -1,7 +1,7 @@
 package com.intecanar.ondiet.ui.weight.recycler.chart
 
 import android.graphics.Color
-import com.intecanar.ondiet.data.model.Weight
+import com.intecanar.ondiet.data.entity.Weight
 import lecho.lib.hellocharts.model.Axis
 import lecho.lib.hellocharts.model.Line
 import lecho.lib.hellocharts.model.LineChartData
@@ -9,7 +9,7 @@ import lecho.lib.hellocharts.model.PointValue
 
 object PreviewAreaChartAdapter {
 
-    fun configurePreviewChart(listOfWeights: MutableList<Weight>):LineChartData {
+    fun configurePreviewChart(listOfWeights: List<Weight>):LineChartData {
         val values: MutableList<PointValue> = AreaChartAdapter.pointConverter(listOfWeights)
         val line = Line(values)
         val accentColor = Color.parseColor("#c25e1a")

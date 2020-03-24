@@ -16,14 +16,14 @@
     <string name="menu_sub_title_water">Registration of the water.</string>
     <string name="menu_sub_title_pill">Pill\'s reminder</string>
 
-    <string name="weightInputFragmentLabel">Weighing Input Screen</string>
+    <string name="weight_timeline_label">%s Kg</string>
 
-    <string name="hint_weight">Please enter your weight.</string>
+    <string name="menu_weight_input">Weight Input</string>
+
     <string name="weight_input_label">Please enter your weight:</string>
     <string name="weighing_date">Weighing date:</string>
     <string name="change_date">Change Date</string>
     <string name="add_weight_data">Add weight data</string>
     <string name="cancel">Cancel</string>
-    <string name="menu_weight_input">Weight Input</string>
 
 </resources>

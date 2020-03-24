@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.intecanar.ondiet.R
 
 class WaterIntakeFragment : Fragment() {
 
     private lateinit var waterIntakeViewModel: WaterIntakeViewModel
+    private lateinit var textView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,12 +21,16 @@ class WaterIntakeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         waterIntakeViewModel =
-            ViewModelProviders.of(this).get(WaterIntakeViewModel::class.java)
+            ViewModelProvider(this).get(WaterIntakeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_water_intake, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        waterIntakeViewModel.text.observe(this, Observer {
+        textView = root.findViewById(R.id.text_slideshow)
+        return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        waterIntakeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        return root
     }
 }

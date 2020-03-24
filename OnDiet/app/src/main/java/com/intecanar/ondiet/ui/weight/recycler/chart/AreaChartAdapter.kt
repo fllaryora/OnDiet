@@ -1,12 +1,12 @@
 package com.intecanar.ondiet.ui.weight.recycler.chart
 
-import com.intecanar.ondiet.data.model.Weight
+import com.intecanar.ondiet.data.entity.Weight
 import lecho.lib.hellocharts.model.PointValue
 import java.time.Duration
 import java.time.OffsetDateTime
 
 object AreaChartAdapter {
-    fun pointConverter(listOfWeights : MutableList<Weight>) :MutableList<PointValue>{
+    fun pointConverter(listOfWeights : List<Weight>) :MutableList<PointValue>{
         val listOfPoints :MutableList<PointValue> = mutableListOf()
 
         if(listOfWeights.isEmpty()) {
