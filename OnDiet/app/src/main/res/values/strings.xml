@@ -19,6 +19,7 @@
     <string name="weight_timeline_label">%s Kg</string>
 
     <string name="menu_weight_input">Weight Input</string>
+    <string name="empty_time_line_label">There is no weighting information to show.</string>
 
     <string name="weight_input_label">Please enter your weight:</string>
     <string name="weighing_date">Weighing date:</string>

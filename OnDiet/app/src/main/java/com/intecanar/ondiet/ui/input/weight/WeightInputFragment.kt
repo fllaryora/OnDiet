@@ -20,7 +20,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-
 class WeightInputFragment : Fragment() {
 
     private lateinit var viewModel: WeightInputViewModel
@@ -38,7 +37,7 @@ class WeightInputFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root =
-         inflater.inflate(R.layout.weight_input_fragment, container, false)
+         inflater.inflate(R.layout.fragment_weight_input, container, false)
 
         cancelButton = root.findViewById(R.id.textButtonCancel)
         acceptButton = root.findViewById(R.id.textButtonAccept)
@@ -47,7 +46,6 @@ class WeightInputFragment : Fragment() {
         weight = root.findViewById(R.id.weightInput)
 
         viewModel = ViewModelProvider(this).get(WeightInputViewModel::class.java)
-
 
         return root
     }

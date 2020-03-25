@@ -47,65 +47,95 @@
         app:layout_constraintBottom_toTopOf="@+id/end_separator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator"/>
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/empty_time_line_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/made_dillan"
+        android:text="@string/empty_time_line_label"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#ADFFFFFF"
+        android:textColor="@color/colorPrimary"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/end_separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        />
 
 
     <!--Two area chats -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:cardBackgroundColor="@color/colorCard"
-        tools:cardCornerRadius="10dp"
-        tools:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:id="@+id/linearChart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:background="@color/colorCard"
             android:orientation="vertical"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            app:layout_constraintBottom_toBottomOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
             <lecho.lib.hellocharts.view.LineChartView
                 android:id="@+id/chart"
                 android:background="@color/colorCard"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="8" >
+                android:paddingEnd="15dp"
+                android:layout_weight="8"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone"
+                >
             </lecho.lib.hellocharts.view.LineChartView>
 
             <View
+                android:id="@+id/inner_separator"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/colorGray" />
+                android:background="@color/colorGray"
+                android:visibility="gone"/>
 
             <lecho.lib.hellocharts.view.PreviewLineChartView
                 android:id="@+id/chart_preview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2" >
+                android:layout_weight="2"
+                android:paddingEnd="15dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:visibility="gone">
             </lecho.lib.hellocharts.view.PreviewLineChartView>
+           <ImageView
+               android:id="@+id/no_data_image"
+               android:layout_width="150dp"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:src="@drawable/ic_no_data"
+               android:layout_gravity="center"
+               android:gravity="center"
+               />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/ic_foots"
         app:tint="@color/colorPrimary"
         app:backgroundTint="@android:color/white"
         app:rippleColor="@color/colorCard"
-        app:layout_constraintTop_toBottomOf="@+id/card_view"
-        app:layout_constraintBottom_toBottomOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/linearChart"
+        app:layout_constraintBottom_toBottomOf="@+id/linearChart"
         app:layout_constraintEnd_toEndOf="parent"
         />
 

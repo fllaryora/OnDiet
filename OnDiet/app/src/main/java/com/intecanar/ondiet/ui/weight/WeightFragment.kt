@@ -58,6 +58,7 @@ class WeightFragment : Fragment() {
         //observe here to avoid manual update.
         weightViewModelViewModel.weightList.observe(viewLifecycleOwner, Observer{
             it?.let{
+                //TODO change show or not here
                 configureRecyclers(it)
             }
         })

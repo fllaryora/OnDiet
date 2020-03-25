@@ -33,6 +33,6 @@
         android:id="@+id/nav_weight_input"
         android:name="com.intecanar.ondiet.ui.input.weight.WeightInputFragment"
         android:label="@string/menu_weight_input"
-        tools:layout="@layout/weight_input_fragment" />
+        tools:layout="@layout/fragment_weight_input" />
 
 </navigation>
