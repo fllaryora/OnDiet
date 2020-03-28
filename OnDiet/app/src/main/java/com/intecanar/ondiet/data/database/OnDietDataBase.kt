@@ -6,16 +6,19 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.intecanar.ondiet.data.converter.TimeConverter
+import com.intecanar.ondiet.data.dao.WaterDAO
 import com.intecanar.ondiet.data.dao.WeightDAO
+import com.intecanar.ondiet.data.entity.Water
 import com.intecanar.ondiet.data.entity.Weight
 
 
 //https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/
 //https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929
-@Database(entities = [Weight::class], version = 1, exportSchema = false)
+@Database(entities = [Weight::class, Water::class], version = 1, exportSchema = false)
 @TypeConverters(TimeConverter::class)
 abstract class OnDietDataBase : RoomDatabase() {
     abstract fun weightDAO() : WeightDAO
+    abstract fun waterDAO() : WaterDAO
     companion object {
         // Singleton prevents multiple instances of database opening at the
         // same time.
