@@ -1,24 +1,26 @@
 package com.intecanar.ondiet.ui.input.weight
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.intecanar.ondiet.R
 import com.intecanar.ondiet.ui.extension.hideKeyboard
 import com.intecanar.ondiet.ui.extension.openDateTimePicker
+import com.intecanar.ondiet.ui.extension.validate
 import com.intecanar.ondiet.ui.util.TimeHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 class WeightInputFragment : Fragment() {
 
@@ -64,8 +66,10 @@ class WeightInputFragment : Fragment() {
         }
 
         acceptButton.setOnClickListener {
-            // TODO viewModel.insert(weight = weight.text)
-            backToWeightScreen()
+            if(weight.text.toString().isValidWeight()) {
+                viewModel.insert(weightText = weight.text.toString())
+                backToWeightScreen()
+            }
         }
 
         dateButton.setOnClickListener {
@@ -74,7 +78,14 @@ class WeightInputFragment : Fragment() {
             }
         }
 
+        weight.validate(resources.getString(R.string.valid_weight_required)) { s -> s.isValidWeight() }
+
     }
+
+    private val weightPattern = Pattern.compile("^[1-9][0-9]{0,2}(\\.[0-9]{0,2})?")
+
+    private fun String.isValidWeight(): Boolean
+            = this.isNotEmpty() && weightPattern.matcher(this).matches()
 
     private fun backToWeightScreen() {
         findNavController().navigate(R.id.nav_weighing)

@@ -3,14 +3,14 @@ package com.intecanar.ondiet.ui.weight
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.intecanar.ondiet.data.database.OnDietDataBase
 import com.intecanar.ondiet.data.entity.Weight
 import com.intecanar.ondiet.domain.OnDietRepository
 import com.intecanar.ondiet.ui.weight.recycler.chart.PreviewAreaChartAdapter
 import com.intecanar.ondiet.ui.weight.recycler.chart.WholeDataAreaChartAdapter
-import lecho.lib.hellocharts.model.LineChartData
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import lecho.lib.hellocharts.model.LineChartData
 
 class WeightViewModel(application: Application) :  AndroidViewModel(application) {
 

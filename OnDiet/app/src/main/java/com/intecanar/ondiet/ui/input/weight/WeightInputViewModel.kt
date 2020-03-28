@@ -35,7 +35,8 @@ class WeightInputViewModel (application: Application) :  AndroidViewModel(applic
      * ViewModels have a coroutine scope based on their lifecycle called
      * viewModelScope which we can use here.
      */
-    fun insert(weight: Float) = viewModelScope.launch {
+    fun insert(weightText: String) = viewModelScope.launch {
+        val weight : Float = weightText.toFloat()
         repository.insert(Weight(weight = weight, date = dateTimeText.value!! ))
     }
 

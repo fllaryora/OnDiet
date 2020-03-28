@@ -72,6 +72,7 @@ class TimeLineAdapter :
     }
 
     public fun setTimeLine( itemList: List<Weight> ){
+        this.itemList.clear()
         this.itemList.addAll(itemList)
         notifyDataSetChanged()
     }

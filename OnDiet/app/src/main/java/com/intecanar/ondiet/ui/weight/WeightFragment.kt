@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.recyclerview.widget.RecyclerView
-import lecho.lib.hellocharts.view.LineChartView
-import lecho.lib.hellocharts.view.PreviewLineChartView
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intecanar.ondiet.R
 import com.intecanar.ondiet.data.entity.Weight
 import com.intecanar.ondiet.ui.weight.recycler.timeline.TimeLineAdapter
@@ -20,6 +20,8 @@ import lecho.lib.hellocharts.gesture.ZoomType
 import lecho.lib.hellocharts.listener.ViewportChangeListener
 import lecho.lib.hellocharts.model.LineChartData
 import lecho.lib.hellocharts.model.Viewport
+import lecho.lib.hellocharts.view.LineChartView
+import lecho.lib.hellocharts.view.PreviewLineChartView
 
 class WeightFragment : Fragment() {
 
@@ -30,6 +32,10 @@ class WeightFragment : Fragment() {
     private  lateinit var timeLineAdapter: TimeLineAdapter
     private lateinit var  areaChartView: LineChartView
     private lateinit var  previewAreaChartView: PreviewLineChartView
+    private lateinit var  innerLineSeparator :View
+
+    private lateinit var emptyListImage: ImageView
+    private lateinit var emptyListMessage: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +48,11 @@ class WeightFragment : Fragment() {
         timeLine = root.findViewById(R.id.recycler_view)
         areaChartView = root.findViewById(R.id.chart)
         previewAreaChartView = root.findViewById(R.id.chart_preview)
+        innerLineSeparator = root.findViewById(R.id.inner_separator)
+
+        emptyListImage = root.findViewById(R.id.no_data_image)
+        emptyListMessage = root.findViewById(R.id.empty_time_line_text_view)
+
         timeLine.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         timeLineAdapter = TimeLineAdapter()
         timeLine.adapter = timeLineAdapter
@@ -58,11 +69,38 @@ class WeightFragment : Fragment() {
         //observe here to avoid manual update.
         weightViewModelViewModel.weightList.observe(viewLifecycleOwner, Observer{
             it?.let{
-                //TODO change show or not here
+
+                var status: VisibilityScreenStatus = if (it.isEmpty())
+                    VisibilityScreenStatus.EMPTY_LIST else VisibilityScreenStatus.AVAILABLE_LIST
+                configureVisibilityByStatus (status)
+                //Toast.makeText(context, "Amount ${it.size}", Toast.LENGTH_LONG).show()
                 configureRecyclers(it)
             }
         })
 
+    }
+
+    private fun configureVisibilityByStatus (status: VisibilityScreenStatus){
+        when (status) {
+            VisibilityScreenStatus.EMPTY_LIST -> {
+                timeLine.visibility = View.GONE
+                areaChartView.visibility = View.GONE
+                innerLineSeparator.visibility = View.GONE
+                previewAreaChartView.visibility = View.GONE
+
+                emptyListImage.visibility = View.VISIBLE
+                emptyListMessage.visibility = View.VISIBLE
+            }
+            VisibilityScreenStatus.AVAILABLE_LIST -> {
+                emptyListImage.visibility = View.GONE
+                emptyListMessage.visibility = View.GONE
+
+                timeLine.visibility = View.VISIBLE
+                areaChartView.visibility = View.VISIBLE
+                innerLineSeparator.visibility = View.VISIBLE
+                previewAreaChartView.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun configureRecyclers(weightList: List<Weight>) {

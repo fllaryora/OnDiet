@@ -9,7 +9,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_weighing">Weighing</string>
-    <string name="menu_water_intake">>Water intake</string>
+    <string name="menu_water_intake">Water intake</string>
     <string name="menu_pill_remainder">Pill\'s reminder</string>
 
     <string name="menu_sub_title_weight">Registration of the weight.</string>
@@ -26,5 +26,6 @@
     <string name="change_date">Change Date</string>
     <string name="add_weight_data">Add weight data</string>
     <string name="cancel">Cancel</string>
+    <string name="valid_weight_required">Valid weigth required</string>
 
 </resources>
