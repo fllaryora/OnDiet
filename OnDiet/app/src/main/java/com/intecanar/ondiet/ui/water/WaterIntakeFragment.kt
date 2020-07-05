@@ -29,8 +29,8 @@ class WaterIntakeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        waterIntakeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        //waterIntakeViewModel.text.observe(viewLifecycleOwner, Observer {
+         //   textView.text = it
+        //})
     }
 }

@@ -27,5 +27,6 @@
     <string name="add_weight_data">Add weight data</string>
     <string name="cancel">Cancel</string>
     <string name="valid_weight_required">Valid weigth required</string>
+    <string name="water_timeline_label">%s l</string>
 
 </resources>

@@ -7,13 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.intecanar.ondiet.data.database.OnDietDataBase
 import com.intecanar.ondiet.data.entity.Weight
-import com.intecanar.ondiet.domain.OnDietRepository
+import com.intecanar.ondiet.domain.WeightRepository
 import kotlinx.coroutines.launch
 import java.time.OffsetDateTime
 
 class WeightInputViewModel (application: Application) :  AndroidViewModel(application) {
     // The ViewModel maintains a reference to the repository to get data.
-    private val repository: OnDietRepository
+    private val repository: WeightRepository
 
     private val _dateTimeText = MutableLiveData<OffsetDateTime>().apply {
         value = OffsetDateTime.now()
@@ -22,10 +22,10 @@ class WeightInputViewModel (application: Application) :  AndroidViewModel(applic
     val dateTimeText: LiveData<OffsetDateTime> = _dateTimeText
 
     init {
-        // Gets reference to WordDao from WordRoomDatabase to construct
-        // the correct WordRepository.
-        val wordsDao = OnDietDataBase.getDatabase(application).weightDAO()
-        repository = OnDietRepository(wordsDao)
+        // Gets reference to weightDAO from OnDietDataBase to construct
+        // the correct WeightRepository.
+        val weightDAO = OnDietDataBase.getDatabase(application).weightDAO()
+        repository = WeightRepository(weightDAO)
     }
 
     /**

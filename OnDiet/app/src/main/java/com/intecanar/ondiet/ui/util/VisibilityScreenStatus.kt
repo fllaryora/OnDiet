@@ -1,4 +1,4 @@
-package com.intecanar.ondiet.ui.weight
+package com.intecanar.ondiet.ui.util
 
 enum class VisibilityScreenStatus {
     EMPTY_LIST,

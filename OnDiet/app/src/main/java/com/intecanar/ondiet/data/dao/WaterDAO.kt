@@ -9,7 +9,7 @@ interface WaterDAO {
 
     //get volume for today
     @Query("select * from water_table where date(date) = date('now')")
-    fun getLastWater(): LiveData<Water>
+    fun getLastWater(): LiveData<List<Water>>
 
     /**
      * where the value emitted on onSuccess is the list of row ids of the items inserted (long)

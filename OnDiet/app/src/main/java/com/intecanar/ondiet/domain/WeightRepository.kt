@@ -6,7 +6,7 @@ import com.intecanar.ondiet.data.entity.Weight
 
 //See, if you need to create a repository which combine different sources.
 //https://github.com/android/architecture-components-samples/tree/master/BasicSample/app/src/main/java/com/example/android/persistence
-class OnDietRepository  (private val weightDAO: WeightDAO)  {
+class WeightRepository  (private val weightDAO: WeightDAO)  {
 
     val weightList: LiveData<List<Weight>> = weightDAO.getAll()
 

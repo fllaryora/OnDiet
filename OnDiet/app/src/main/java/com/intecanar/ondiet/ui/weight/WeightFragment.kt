@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intecanar.ondiet.R
 import com.intecanar.ondiet.data.entity.Weight
+import com.intecanar.ondiet.ui.util.VisibilityScreenStatus
 import com.intecanar.ondiet.ui.weight.recycler.timeline.TimeLineAdapter
 import lecho.lib.hellocharts.gesture.ZoomType
 import lecho.lib.hellocharts.listener.ViewportChangeListener
