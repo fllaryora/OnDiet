@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.vipulasri.timelineview.TimelineView
 import com.intecanar.ondiet.R
-import com.intecanar.ondiet.data.entity.Water
+import com.intecanar.ondiet.data.database.entities.Water
 import com.intecanar.ondiet.ui.util.TimeHelper
 
 class TimeLineAdapter :
@@ -49,7 +49,7 @@ class TimeLineAdapter :
     }
 
     override fun onBindViewHolder(holder: TimeLineViewHolder, position: Int) {
-        val timeItem :Water = this.itemList[position]
+        val timeItem : Water = this.itemList[position]
         holder.bind(timeItem, this.listener)
     }
 

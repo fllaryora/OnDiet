@@ -1,6 +1,6 @@
 package com.intecanar.ondiet.ui.water.recycler.chart
 
-import com.intecanar.ondiet.data.entity.Water
+import com.intecanar.ondiet.data.database.entities.Water
 import lecho.lib.hellocharts.model.PointValue
 import java.time.Duration
 import java.time.OffsetDateTime

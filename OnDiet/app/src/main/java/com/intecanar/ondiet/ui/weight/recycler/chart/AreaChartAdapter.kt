@@ -1,6 +1,6 @@
 package com.intecanar.ondiet.ui.weight.recycler.chart
 
-import com.intecanar.ondiet.data.entity.Weight
+import com.intecanar.ondiet.data.database.entities.Weight
 import lecho.lib.hellocharts.model.PointValue
 import java.time.Duration
 import java.time.OffsetDateTime

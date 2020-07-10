@@ -1,7 +1,7 @@
 package com.intecanar.ondiet.ui.water.recycler.chart
 
 import android.graphics.Color
-import com.intecanar.ondiet.data.entity.Water
+import com.intecanar.ondiet.data.database.entities.Water
 import lecho.lib.hellocharts.model.Axis
 import lecho.lib.hellocharts.model.Line
 import lecho.lib.hellocharts.model.LineChartData

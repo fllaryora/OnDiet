@@ -11,10 +11,22 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.intecanar.ondiet.ui.util.ActivityCompositionRoot
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private var mActivityCompositionRoot: ActivityCompositionRoot? = null
+
+    fun getCompositionRoot(): ActivityCompositionRoot {
+        if (mActivityCompositionRoot == null) {
+            mActivityCompositionRoot = ActivityCompositionRoot(
+                (application as OnDietApplication).getApplicationCompositionRoot(),
+                this
+            )
+        }
+        return mActivityCompositionRoot!!
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

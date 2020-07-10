@@ -1,0 +1,68 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:322084675367153647",
+      "lastPropertyId": "3:3558885068282633680",
+      "name": "Weight",
+      "properties": [
+        {
+          "id": "1:4692049649474908635",
+          "name": "date",
+          "type": 9
+        },
+        {
+          "id": "2:801178932480183619",
+          "name": "weight",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "3:3558885068282633680",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:322951257690818638",
+      "lastPropertyId": "3:5641204585515872598",
+      "name": "Water",
+      "properties": [
+        {
+          "id": "1:4051577969969137058",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2065959481217038020",
+          "name": "date",
+          "type": 9
+        },
+        {
+          "id": "3:5641204585515872598",
+          "name": "volume",
+          "type": 7,
+          "flags": 4
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:322951257690818638",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

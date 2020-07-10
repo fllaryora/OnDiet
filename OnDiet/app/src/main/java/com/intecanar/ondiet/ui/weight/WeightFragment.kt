@@ -4,154 +4,59 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.annotation.IdRes
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.intecanar.ondiet.R
-import com.intecanar.ondiet.data.entity.Weight
-import com.intecanar.ondiet.ui.util.VisibilityScreenStatus
-import com.intecanar.ondiet.ui.weight.recycler.timeline.TimeLineAdapter
-import lecho.lib.hellocharts.gesture.ZoomType
-import lecho.lib.hellocharts.listener.ViewportChangeListener
-import lecho.lib.hellocharts.model.LineChartData
-import lecho.lib.hellocharts.model.Viewport
-import lecho.lib.hellocharts.view.LineChartView
-import lecho.lib.hellocharts.view.PreviewLineChartView
+import com.intecanar.ondiet.data.database.entities.Weight
+import com.intecanar.ondiet.domain.FetchAllWeightsUseCase
+import com.intecanar.ondiet.ui.util.BaseFragment
+import com.intecanar.ondiet.ui.util.ViewMvcFactory
 
-class WeightFragment : Fragment() {
+///https://github.com/techyourchance/android_mvc_tutorial/blob/master/app/src/main/java/com/techyourchance/android_mvc_tutorial/screens/smsall/SmsAllFragment.java
+class WeightFragment : BaseFragment(), WeightViewMvc.Listener, FetchAllWeightsUseCase.Listener {
 
-    private lateinit var weightViewModelViewModel: WeightViewModel
+    private lateinit var mViewMVC: WeightViewMvc
+    private  lateinit var mViewMvcFactory: ViewMvcFactory
+    private lateinit var mFetchAllWeightsUseCase: FetchAllWeightsUseCase
 
-    private lateinit var weightScaleButton: FloatingActionButton
-    private  lateinit var timeLine: RecyclerView
-    private  lateinit var timeLineAdapter: TimeLineAdapter
-    private lateinit var  areaChartView: LineChartView
-    private lateinit var  previewAreaChartView: PreviewLineChartView
-    private lateinit var  innerLineSeparator :View
-
-    private lateinit var emptyListImage: ImageView
-    private lateinit var emptyListMessage: TextView
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        val root = inflater.inflate(R.layout.fragment_weight, container, false)
-        weightScaleButton = root.findViewById(R.id.fab)
-        timeLine = root.findViewById(R.id.recycler_view)
-        areaChartView = root.findViewById(R.id.chart)
-        previewAreaChartView = root.findViewById(R.id.chart_preview)
-        innerLineSeparator = root.findViewById(R.id.inner_separator)
-
-        emptyListImage = root.findViewById(R.id.no_data_image)
-        emptyListMessage = root.findViewById(R.id.empty_time_line_text_view)
-
-        timeLine.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        timeLineAdapter = TimeLineAdapter()
-        timeLine.adapter = timeLineAdapter
-
-        weightViewModelViewModel =
-            ViewModelProvider(this).get(WeightViewModel::class.java)
-
-        return root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mViewMvcFactory = compositionRoot.viewMvcFactory
+        mFetchAllWeightsUseCase = compositionRoot.fetchAllWeightsUseCase
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        //observe here to avoid manual update.
-        weightViewModelViewModel.weightList.observe(viewLifecycleOwner, Observer{
-            it?.let{
-
-                var status: VisibilityScreenStatus = if (it.isEmpty())
-                    VisibilityScreenStatus.EMPTY_LIST else VisibilityScreenStatus.AVAILABLE_LIST
-                configureVisibilityByStatus (status)
-                //Toast.makeText(context, "Amount ${it.size}", Toast.LENGTH_LONG).show()
-                configureRecyclers(it)
-            }
-        })
-
-    }
-
-    private fun configureVisibilityByStatus (status: VisibilityScreenStatus){
-        when (status) {
-            VisibilityScreenStatus.EMPTY_LIST -> {
-                timeLine.visibility = View.GONE
-                areaChartView.visibility = View.GONE
-                innerLineSeparator.visibility = View.GONE
-                previewAreaChartView.visibility = View.GONE
-
-                emptyListImage.visibility = View.VISIBLE
-                emptyListMessage.visibility = View.VISIBLE
-            }
-            VisibilityScreenStatus.AVAILABLE_LIST -> {
-                emptyListImage.visibility = View.GONE
-                emptyListMessage.visibility = View.GONE
-
-                timeLine.visibility = View.VISIBLE
-                areaChartView.visibility = View.VISIBLE
-                innerLineSeparator.visibility = View.VISIBLE
-                previewAreaChartView.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun configureRecyclers(weightList: List<Weight>) {
-        configureAreaChart(weightViewModelViewModel.getAreaChartList(weightList))
-        configurePreviewChart(weightViewModelViewModel.getPreviewChartList(weightList))
-        configureTimeLine(weightList)
-    }
-
-    private fun configureTimeLine(weightList: List<Weight>) {
-        timeLineAdapter.setTimeLine(weightList)
-        timeLineAdapter.setOnItemClickListener(object : TimeLineAdapter.OnItemClickListener {
-            override fun onClick(view: View, weight : Weight) {
-                weightViewModelViewModel.delete(weight)
-            }
-        })
-
-    }
-
-    private fun configureAreaChart( lineChartData: LineChartData) {
-        areaChartView.isZoomEnabled = true
-        areaChartView.isScrollEnabled = false
-        areaChartView.lineChartData = lineChartData
-    }
-
-    private fun configurePreviewChart( lineChartData: LineChartData) {
-        previewAreaChartView.lineChartData = lineChartData
-        previewAreaChartView.setViewportChangeListener(ViewportListener())
-        val tempViewport = Viewport(previewAreaChartView.maximumViewport)
-        val dx = tempViewport.width() / 3f
-        tempViewport.inset(dx, 0f)
-        previewAreaChartView.setCurrentViewportWithAnimation(tempViewport)
-        previewAreaChartView.zoomType = ZoomType.HORIZONTAL
-    }
-
-    inner class  ViewportListener : ViewportChangeListener {
-        override fun onViewportChanged(newViewport: Viewport?) {
-            // don't use animation, it is unnecessary when using preview chart.
-            areaChartView.currentViewport = newViewport
-        }
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle? ): View? {
+        mViewMVC = mViewMvcFactory.newWeightViewMvc(container, activity)
+        return mViewMVC.getRootView()
     }
 
     override fun onStart() {
         super.onStart()
-        weightScaleButton.setOnClickListener {
-            findNavController().navigate(R.id.nav_weight_input)
-        }
+        mViewMVC.registerListener(this)
+        mFetchAllWeightsUseCase.fetchAllWeights()
     }
 
     override fun onStop() {
         super.onStop()
-        weightScaleButton.setOnClickListener(null)
+        mViewMVC.unregisterListener(this)
+        //I hope the equivalent of this weightScaleButton.setOnClickListener(null)
+        // is called
     }
+
+    override fun onAllWeightsFetched(weightList: List<Weight>) {
+        mViewMVC.bindWeightList(weightList)
+    }
+
+    /**
+     * Callback function which will be used by our controller
+     * to do its things when something happen
+     */
+    override fun onWeightClicked() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onNavigateWeightScaleClicked(@IdRes rIdNavWeightInput: Int) {
+        findNavController().navigate(rIdNavWeightInput)
+    }
+
 }

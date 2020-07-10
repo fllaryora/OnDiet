@@ -6,15 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intecanar.ondiet.R
 import com.intecanar.ondiet.ui.home.recycler.AppSectionItem
 import com.intecanar.ondiet.ui.home.recycler.MenuRecyclerAdapter
+import com.intecanar.ondiet.ui.util.BaseFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
 
     private lateinit var recyclerView: RecyclerView
@@ -55,10 +55,10 @@ class HomeFragment : Fragment() {
                         findNavController().navigate(R.id.nav_weighing)
                     }
                     resources.getString(R.string.menu_water_intake) -> {
-                        findNavController().navigate(R.id.nav_water_intake)
+                        //findNavController().navigate(R.id.nav_water_intake)
                     }
                     resources.getString(R.string.menu_pill_remainder) -> {
-                        findNavController().navigate(R.id.nav_pill_remainder)
+                        //findNavController().navigate(R.id.nav_pill_remainder)
                     }
                 }
             }
