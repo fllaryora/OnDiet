@@ -1,5 +1,8 @@
 package com.intecanar.ondiet.ui.input.weight
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -12,6 +15,7 @@ import com.intecanar.ondiet.ui.extension.validate
 import com.intecanar.ondiet.ui.util.BaseViewMvc
 import com.intecanar.ondiet.ui.util.TimeHelper
 import java.time.OffsetDateTime
+import android.text.format.DateFormat
 
 class WeightInputViewMvcImpl (layoutInflater: LayoutInflater, container: ViewGroup?, activity: FragmentActivity?)
     : BaseViewMvc<WeightInputViewMvc.Listener>(), WeightInputViewMvc {
@@ -33,6 +37,10 @@ class WeightInputViewMvcImpl (layoutInflater: LayoutInflater, container: ViewGro
         dateText.text = dateOffsetDateTime.format(TimeHelper.formatter)
         weight = getRootView().findViewById(R.id.weightInput)
 
+
+
+
+
         cancelButton.setOnClickListener {
             backToWeightScreen()
         }
@@ -49,16 +57,16 @@ class WeightInputViewMvcImpl (layoutInflater: LayoutInflater, container: ViewGro
         }
 
         dateButton.setOnClickListener {
-            //datePickerJob = uiScope.launch {
-            //    viewModel.setNewDateTime(context?.openDateTimePicker())
-            //}
+            openDateTimePicker(dateOffsetDateTime) {
+                dateOffsetDateTime = it
+                dateText.text = dateOffsetDateTime.format(TimeHelper.formatter)
+            }
         }
 
         //Add editText validator over weight
         weight.validate(getString(R.string.valid_weight_required)) { s ->
             s.isValidWeight()
         }
-
     }
 
     override fun backToWeightScreen() {
