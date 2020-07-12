@@ -55,8 +55,8 @@ class WeightInputFragment : BaseFragment(), WeightInputViewMvc.Listener, InsertW
      * Callback function which will be used by our controller
      * to do its things when something happen
      */
-    override fun onNavigateWeighingClicked(rIdNavWeighing : Int) {
-        findNavController().navigate(rIdNavWeighing)
+    override fun onNavigateUp() {
+        findNavController().navigateUp()
     }
 
     override fun onWeightInserted(weight: Weight) {

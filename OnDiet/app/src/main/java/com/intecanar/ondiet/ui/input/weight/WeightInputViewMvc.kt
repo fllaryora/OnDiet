@@ -11,7 +11,7 @@ interface WeightInputViewMvc : ViewMvc {
          * to do its things when something happen
          */
         fun onWeightInserted(weight: Weight)
-        fun onNavigateWeighingClicked(@IdRes rIdNavWeighing: Int)
+        fun onNavigateUp()
 
     }
 

@@ -63,7 +63,7 @@ class WeightInputViewMvcImpl (layoutInflater: LayoutInflater, container: ViewGro
 
     override fun backToWeightScreen() {
         for(listener in listeners){
-            listener.onNavigateWeighingClicked(R.id.nav_weighing)
+            listener.onNavigateUp()
         }
     }
 
