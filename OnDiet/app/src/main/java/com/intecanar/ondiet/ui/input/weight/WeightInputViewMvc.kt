@@ -1,22 +1,22 @@
-package com.intecanar.ondiet.ui.weight
+package com.intecanar.ondiet.ui.input.weight
 
 import androidx.annotation.IdRes
 import com.intecanar.ondiet.data.database.entities.Weight
 import com.intecanar.ondiet.ui.util.ViewMvc
 
-// VIEW: interface
-interface WeightViewMvc : ViewMvc {
+interface WeightInputViewMvc : ViewMvc {
     interface Listener {
         /**
          * Callback function which will be used by our controller
          * to do its things when something happen
          */
-        fun onNavigateWeightScaleClicked(@IdRes rIdNavWeightInput: Int)
-        fun onWeightSelectedToDelete(weight: Weight)
+        fun onWeightInserted(weight: Weight)
+        fun onNavigateWeighingClicked(@IdRes rIdNavWeighing: Int)
+
     }
 
-    fun bindWeightList(weightList: List<Weight>)
-
+    fun backToWeightScreen()
     fun registerListener(listener: Listener)
     fun unregisterListener(listener: Listener)
+
 }

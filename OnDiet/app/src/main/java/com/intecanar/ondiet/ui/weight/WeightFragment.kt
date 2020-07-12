@@ -4,24 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.navigation.fragment.findNavController
 import com.intecanar.ondiet.data.database.entities.Weight
+import com.intecanar.ondiet.domain.DeleteWeightUseCase
 import com.intecanar.ondiet.domain.FetchAllWeightsUseCase
 import com.intecanar.ondiet.ui.util.BaseFragment
 import com.intecanar.ondiet.ui.util.ViewMvcFactory
 
 ///https://github.com/techyourchance/android_mvc_tutorial/blob/master/app/src/main/java/com/techyourchance/android_mvc_tutorial/screens/smsall/SmsAllFragment.java
-class WeightFragment : BaseFragment(), WeightViewMvc.Listener, FetchAllWeightsUseCase.Listener {
+class WeightFragment : BaseFragment(), WeightViewMvc.Listener,
+    FetchAllWeightsUseCase.Listener,
+    DeleteWeightUseCase.Listener {
 
     private lateinit var mViewMVC: WeightViewMvc
     private  lateinit var mViewMvcFactory: ViewMvcFactory
     private lateinit var mFetchAllWeightsUseCase: FetchAllWeightsUseCase
+    private lateinit var mDeleteWeightUseCase: DeleteWeightUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewMvcFactory = compositionRoot.viewMvcFactory
         mFetchAllWeightsUseCase = compositionRoot.fetchAllWeightsUseCase
+        mDeleteWeightUseCase = compositionRoot.deleteWeightUseCase
     }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
@@ -51,12 +57,23 @@ class WeightFragment : BaseFragment(), WeightViewMvc.Listener, FetchAllWeightsUs
      * Callback function which will be used by our controller
      * to do its things when something happen
      */
-    override fun onWeightClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun onWeightDeleted(success: Boolean) {
+        if(success) {
+            Toast.makeText(context,"Se elimino con exito", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(context,"No Se elimino", Toast.LENGTH_LONG).show()
+        }
+        // refresh
+        mFetchAllWeightsUseCase.fetchAllWeights()
     }
 
     override fun onNavigateWeightScaleClicked(@IdRes rIdNavWeightInput: Int) {
         findNavController().navigate(rIdNavWeightInput)
+    }
+
+    override fun onWeightSelectedToDelete(weight: Weight) {
+        mDeleteWeightUseCase.deleteWeight(weight)
     }
 
 }

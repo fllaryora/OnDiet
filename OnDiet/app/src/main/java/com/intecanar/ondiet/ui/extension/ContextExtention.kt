@@ -1,14 +1,12 @@
 package com.intecanar.ondiet.ui.extension
 
-import android.app.DatePickerDialog
+/*import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.text.format.DateFormat
-import java.time.OffsetDateTime
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+import java.time.OffsetDateTime*/
 
-suspend fun Context.openDateTimePicker(offsetDateTime: OffsetDateTime = OffsetDateTime.now()): OffsetDateTime =
+/*suspend fun Context.openDateTimePicker(offsetDateTime: OffsetDateTime = OffsetDateTime.now()): OffsetDateTime =
     suspendCoroutine { continuation ->
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
             //month (0-11 for compatibility with Calendar#MONTH)
@@ -46,4 +44,4 @@ suspend fun Context.openDateTimePicker(offsetDateTime: OffsetDateTime = OffsetDa
             (offsetDateTime.monthValue-1),
             offsetDateTime.dayOfMonth
         ).show()
-    }
+    }*/

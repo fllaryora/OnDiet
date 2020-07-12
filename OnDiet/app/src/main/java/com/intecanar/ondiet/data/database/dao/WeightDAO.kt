@@ -24,16 +24,17 @@ object WeightDAO {
      * Performance note: if you want to put several entities, consider {@link #put(Collection)},
      * {@link #put(Object[])}, {@link BoxStore#runInTx(Runnable)}, etc. instead.
      */
-    fun insert(weight: Weight) {
-        weightBox.put(weight)
+    fun insert(weight: Weight) : Long {
+        //return the new key
+        return weightBox.put(weight)
     }
 
     /**
      * Removes (deletes) the given Object.
      * @return true if an entity was actually removed (false if no entity exists with the given ID)
      */
-    fun delete(weight: Weight) {
-        weightBox.remove(weight)
+    fun delete(weight: Weight) : Boolean{
+        return weightBox.remove(weight)
     }
 
     // in case of asyncronous call

@@ -52,11 +52,9 @@ class WeightViewMvcImpl(layoutInflater: LayoutInflater,container: ViewGroup?, ac
 
         weightScaleButton.setOnClickListener {
             for(listener in listeners) {
-                //listener.onNavigateWeightScaleClicked(R.id.nav_weight_input)
-                listener.onNavigateWeightScaleClicked(R.id.nav_home)
+                listener.onNavigateWeightScaleClicked(R.id.nav_weight_input)
             }
         }
-
         configureVisibilityByStatus (VisibilityScreenStatus.EMPTY_LIST)
 
     }
@@ -78,7 +76,9 @@ class WeightViewMvcImpl(layoutInflater: LayoutInflater,container: ViewGroup?, ac
         timeLineAdapter.setTimeLine(weightList)
         timeLineAdapter.setOnItemClickListener(object : TimeLineAdapter.OnItemClickListener {
             override fun onClick(view: View, weight : Weight) {
-                //weightViewModelViewModel.delete(weight)
+                for(listener in listeners) {
+                    listener.onWeightSelectedToDelete(weight)
+                }
             }
         })
 

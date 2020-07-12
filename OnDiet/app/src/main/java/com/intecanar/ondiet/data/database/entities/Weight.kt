@@ -10,7 +10,7 @@ import java.time.OffsetDateTime
 @Entity
 data class Weight (
     @Id
-    var id: Long = 0,///must be called id and must be a Long :(
+    var id: Long = 0L,///must be called id and must be a Long :(
     @Convert(converter = TimeConverterForObjectBox::class, dbType = String::class)
     val date: OffsetDateTime,
     val weight: Float

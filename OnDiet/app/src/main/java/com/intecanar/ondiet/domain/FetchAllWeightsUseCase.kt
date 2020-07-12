@@ -6,7 +6,7 @@ import com.techyourchance.threadposter.BackgroundThreadPoster
 import com.techyourchance.threadposter.UiThreadPoster
 
 
-class FetchAllWeightsUseCase(
+class FetchAllWeightsUseCase (
     private val mUiThreadPoster: UiThreadPoster,
     private val mBackgroundThreadPoster: BackgroundThreadPoster,
     private val mFetchWeightsUseCaseSync: FetchWeightsUseCaseSync

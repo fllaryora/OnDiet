@@ -16,11 +16,11 @@ class FetchWeightsUseCaseSync {
         return WeightDAO.getWeights()
     }
 
-    fun deleteWeight(weight: Weight){
+    fun deleteWeight(weight: Weight) : Boolean {
         return WeightDAO.delete(weight)
     }
 
-    fun insert(weight: Weight){
+    fun insert(weight: Weight) : Long {
         return WeightDAO.insert(weight)
     }
 

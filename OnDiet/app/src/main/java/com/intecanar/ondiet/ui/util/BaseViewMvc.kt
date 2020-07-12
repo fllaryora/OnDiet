@@ -5,10 +5,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import androidx.annotation.ColorRes
 import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+import java.util.regex.Pattern
 
 abstract class BaseViewMvc<LISTENER> : BaseObservable<LISTENER>(), ViewMvc {
 
     private lateinit var mRootView: View
+    private val weightPattern = Pattern.compile("^[1-9][0-9]{0,2}(\\.[0-9]{0,2})?")
 
     protected fun setRootView(rootView: View) {
         mRootView = rootView
@@ -23,13 +26,13 @@ abstract class BaseViewMvc<LISTENER> : BaseObservable<LISTENER>(), ViewMvc {
     }
 
     protected fun getColor(@ColorRes colorId: Int): Int {
-        return mRootView!!.context.resources.getColor(colorId)
+        return mRootView.context.resources.getColor(colorId)
     }
 
-    companion object {
-        fun fromUnixTimestampToHumanReadableFormat(timestamp: String): String {
-            val fmtOut = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            return fmtOut.format(Date(java.lang.Long.valueOf(timestamp)))
-        }
+    protected fun getString(@StringRes stringId: Int): String {
+        return mRootView.context.resources.getString(stringId)
     }
+
+    protected fun String.isValidWeight(): Boolean
+            = this.isNotEmpty() && weightPattern.matcher(this).matches()
 }
