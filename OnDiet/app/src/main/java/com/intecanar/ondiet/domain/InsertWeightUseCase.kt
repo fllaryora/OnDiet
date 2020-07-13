@@ -23,6 +23,9 @@ private val mFetchWeightsUseCaseSync: FetchWeightsUseCaseSync
 
     private fun notifySuccess( newKey : Long) {
         mUiThreadPoster.post {
+           if(listeners.isEmpty()) {
+               throw Exception("Can not get event")
+           }
             for (listener in listeners) {
                 listener.onWeightSaved(newKey)
             }

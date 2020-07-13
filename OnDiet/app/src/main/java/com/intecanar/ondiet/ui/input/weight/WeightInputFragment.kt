@@ -32,12 +32,14 @@ class WeightInputFragment : BaseFragment(), WeightInputViewMvc.Listener, InsertW
     override fun onStart() {
         super.onStart()
         mViewMVC.registerListener(this)
+        mInsertWeightUseCase.registerListener(this)
     }
 
 
     override fun onStop() {
         super.onStop()
         mViewMVC.unregisterListener(this)
+        mInsertWeightUseCase.unregisterListener(this)
         //I hope the equivalent of this
         //cancelButton.setOnClickListener(null)
         //acceptButton.setOnClickListener(null)

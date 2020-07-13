@@ -37,10 +37,6 @@ class WeightInputViewMvcImpl (layoutInflater: LayoutInflater, container: ViewGro
         dateText.text = dateOffsetDateTime.format(TimeHelper.formatter)
         weight = getRootView().findViewById(R.id.weightInput)
 
-
-
-
-
         cancelButton.setOnClickListener {
             backToWeightScreen()
         }

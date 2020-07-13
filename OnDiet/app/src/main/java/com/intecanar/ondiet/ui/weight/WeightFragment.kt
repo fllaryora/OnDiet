@@ -39,12 +39,16 @@ class WeightFragment : BaseFragment(), WeightViewMvc.Listener,
     override fun onStart() {
         super.onStart()
         mViewMVC.registerListener(this)
+        mFetchAllWeightsUseCase.registerListener(this)
+        mDeleteWeightUseCase.registerListener(this)
         mFetchAllWeightsUseCase.fetchAllWeights()
     }
 
     override fun onStop() {
         super.onStop()
         mViewMVC.unregisterListener(this)
+        mFetchAllWeightsUseCase.unregisterListener(this)
+        mDeleteWeightUseCase.unregisterListener(this)
         //I hope the equivalent of this weightScaleButton.setOnClickListener(null)
         // is called
     }

@@ -24,6 +24,9 @@ class FetchAllWeightsUseCase (
 
     private fun notifySuccess(weightList: List<Weight>) {
         mUiThreadPoster.post {
+            if(listeners.isEmpty()) {
+                throw Exception("Can not get event")
+            }
             for (listener in listeners) {
                 listener.onAllWeightsFetched(weightList)
             }
