@@ -1,45 +1,45 @@
-package com.intecanar.ondiet.ui.input.weight
+package com.intecanar.ondiet.ui.input.water
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.intecanar.ondiet.data.database.entities.Weight
-import com.intecanar.ondiet.domain.weight.InsertWeightUseCase
+import com.intecanar.ondiet.data.database.entities.Water
+import com.intecanar.ondiet.domain.water.InsertWaterUseCase
 import com.intecanar.ondiet.ui.extension.hideKeyboard
 import com.intecanar.ondiet.ui.util.BaseFragment
 import com.intecanar.ondiet.ui.util.ViewMvcFactory
 
-class WeightInputFragment : BaseFragment(), WeightInputViewMvc.Listener, InsertWeightUseCase.Listener {
+class WaterIntakeInputFragment : BaseFragment(), WaterIntakeInputViewMvc.Listener, InsertWaterUseCase.Listener {
 
     private  lateinit var mViewMvcFactory: ViewMvcFactory
-    private lateinit var mViewMVC: WeightInputViewMvc
+    private lateinit var mViewMVC: WaterIntakeInputViewMvc
 
-    private lateinit var mInsertWeightUseCase: InsertWeightUseCase
+    private lateinit var mInsertWaterUseCase: InsertWaterUseCase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewMvcFactory = compositionRoot.viewMvcFactory
-        mInsertWeightUseCase = compositionRoot.insertWeightUseCase
+        mInsertWaterUseCase = compositionRoot.insertWaterUseCase
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle? ): View? {
-        mViewMVC = mViewMvcFactory.newWeightInputViewMvc(container)
+        mViewMVC = mViewMvcFactory.newWaterInputViewMvc(container)
         return mViewMVC.getRootView()
     }
 
     override fun onStart() {
         super.onStart()
         mViewMVC.registerListener(this)
-        mInsertWeightUseCase.registerListener(this)
+        mInsertWaterUseCase.registerListener(this)
     }
 
 
     override fun onStop() {
         super.onStop()
         mViewMVC.unregisterListener(this)
-        mInsertWeightUseCase.unregisterListener(this)
+        mInsertWaterUseCase.unregisterListener(this)
         //I hope the equivalent of this
         //cancelButton.setOnClickListener(null)
         //acceptButton.setOnClickListener(null)
@@ -48,9 +48,9 @@ class WeightInputFragment : BaseFragment(), WeightInputViewMvc.Listener, InsertW
         hideKeyboard()
     }
 
-    override fun onWeightSaved(newKey : Long) {
+    override fun onWaterSaved(newKey: Long) {
         // TOAST SUCCESS !
-        mViewMVC.backToWeightScreen()
+        mViewMVC.backToWaterScreen()
     }
 
     /**
@@ -61,7 +61,7 @@ class WeightInputFragment : BaseFragment(), WeightInputViewMvc.Listener, InsertW
         findNavController().navigateUp()
     }
 
-    override fun onWeightInserted(weight: Weight) {
-        mInsertWeightUseCase.insertWeight(weight)
+    override fun onWaterInserted(water: Water) {
+        mInsertWaterUseCase.insertWaterIntake(water)
     }
 }

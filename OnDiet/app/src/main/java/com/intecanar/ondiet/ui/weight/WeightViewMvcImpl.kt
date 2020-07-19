@@ -135,4 +135,12 @@ class WeightViewMvcImpl(layoutInflater: LayoutInflater,container: ViewGroup?, ac
 
     fun getPreviewChartList(weightList: List<Weight>): LineChartData
             = PreviewAreaChartAdapter.configurePreviewChart(weightList)
+
+    override fun getDeleteMessage(success: Boolean): String {
+        return if(success) {
+            this.getString(R.string.delete_weight_successful)
+        } else {
+            this.getString(R.string.delete_weight_error)
+        }
+    }
 }

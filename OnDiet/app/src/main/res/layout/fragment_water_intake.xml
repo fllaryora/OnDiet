@@ -2,18 +2,122 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="15dp">
 
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
+    <!--Middle line which sepatare between the 2 recyclers (logic) -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.60" />
+
+    <!--Middle line which sepatare between the 2 recyclers (visual) -->
+    <View
+        android:id="@+id/separator"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:background="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"/>
+
+    <!--Bottom line which end the last recycler with elegance (visual) -->
+    <View
+        android:id="@+id/end_separator"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!--Time line recycler -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_timeline"
+        android:background="#ADFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/end_separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/empty_time_line_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/made_dillan"
+        android:text="@string/empty_water_time_line_label"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#ADFFFFFF"
+        android:textColor="@color/colorPrimary"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/end_separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        />
+
+
+    <!--Two area chats -->
+    <LinearLayout
+        android:id="@+id/linearChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorCard"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <lecho.lib.hellocharts.view.LineChartView
+            android:id="@+id/chart"
+            android:background="@color/colorCard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingEnd="15dp"
+            android:layout_weight="8"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            >
+        </lecho.lib.hellocharts.view.LineChartView>
+
+        <ImageView
+            android:id="@+id/no_data_image"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_water_no_data"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_intake"
+        app:tint="@color/colorPrimary"
+        app:backgroundTint="@android:color/white"
+        app:rippleColor="@color/colorCard"
+        app:layout_constraintTop_toBottomOf="@+id/linearChart"
+        app:layout_constraintBottom_toBottomOf="@+id/linearChart"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,12 +23,19 @@
         android:label="@string/menu_weight_input"
         tools:layout="@layout/fragment_weight_input" />
 
-    <!--<fragment
+    <fragment
         android:id="@+id/nav_water_intake"
         android:name="com.intecanar.ondiet.ui.water.WaterIntakeFragment"
         android:label="@string/menu_water_intake"
         tools:layout="@layout/fragment_water_intake" />
 
+    <fragment
+        android:id="@+id/nav_water_intake_input"
+        android:name="com.intecanar.ondiet.ui.input.water.WaterIntakeInputFragment"
+        android:label="@string/menu_water_intake_input"
+        tools:layout="@layout/fragment_water_intake_input" />
+
+    <!--
     <fragment
         android:id="@+id/nav_pill_remainder"
         android:name="com.intecanar.ondiet.ui.pill.PillRemainderFragment"

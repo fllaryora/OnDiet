@@ -16,17 +16,30 @@
     <string name="menu_sub_title_water">Registro de ingesta de agua.</string>
     <string name="menu_sub_title_pill">Recordatorio para vitaminas.</string>
 
-    <string name="weight_timeline_label">%s Kg</string>
+    <!-- All secctions -->
+    <string name="cancel">Cancelar</string>
+    <string name="change_date">Cambiar Fecha</string>
 
+    <!-- weight -->
+    <string name="weight_timeline_label">%s Kg</string>
     <string name="menu_weight_input">Pesaje</string>
     <string name="empty_time_line_label">No hay información de pesaje para mostrar.</string>
-
     <string name="weight_input_label">Por favor ingrese el peso:</string>
     <string name="valid_weight_required">Se requiere un peso valido.</string>
     <string name="weighing_date">Fecha de Pesaje:</string>
-    <string name="change_date">Cambiar Fecha</string>
     <string name="add_weight_data">Ingresar Datos</string>
-    <string name="cancel">Cancelar</string>
-    <string name="water_timeline_label">%s l</string>
+    <string name="delete_weight_error">No se logro eliminar un pesaje.</string>
+    <string name="delete_weight_successful">Se elimino un pesaje.</string>
+
+    <!-- water -->
+    <string name="water_timeline_label">%s ml</string>
+    <string name="menu_water_intake_input">Ingesta de agua</string>
+    <string name="empty_water_time_line_label">No hay información de ingesta de agua para mostrar.</string>
+    <string name="water_input_label">Por favor ingrese el volumen:</string>
+    <string name="valid_water_required">Se requiere un peso valido.</string>
+    <string name="water_date">Fecha de Ingesta:</string>
+    <string name="add_water_data">Ingresar Datos</string>
+    <string name="delete_water_error">No se logro eliminar la información.</string>
+    <string name="delete_water_successful">Se elimino la información de ingesta de agua.</string>
 
 </resources>

@@ -1,33 +1,33 @@
-package com.intecanar.ondiet.domain
+package com.intecanar.ondiet.domain.weight
 
 import com.intecanar.ondiet.data.database.entities.Weight
 import com.intecanar.ondiet.ui.util.BaseObservable
 import com.techyourchance.threadposter.BackgroundThreadPoster
 import com.techyourchance.threadposter.UiThreadPoster
 
-class DeleteWeightUseCase (
+class InsertWeightUseCase (
 private val mUiThreadPoster: UiThreadPoster,
 private val mBackgroundThreadPoster: BackgroundThreadPoster,
 private val mFetchWeightsUseCaseSync: FetchWeightsUseCaseSync
-) : BaseObservable<DeleteWeightUseCase.Listener>() {
+) : BaseObservable<InsertWeightUseCase.Listener>() {
 
     interface Listener {
-        fun onWeightDeleted( success: Boolean)
+        fun onWeightSaved(newKey : Long)
     }
 
-    fun deleteWeight(weight: Weight) {
+    fun insertWeight(weight: Weight) {
         mBackgroundThreadPoster.post {
-            notifySuccess(mFetchWeightsUseCaseSync.deleteWeight(weight) )
+            notifySuccess(mFetchWeightsUseCaseSync.insert(weight) )
         }
     }
 
-    private fun notifySuccess( success: Boolean) {
+    private fun notifySuccess( newKey : Long) {
         mUiThreadPoster.post {
-            if(listeners.isEmpty()) {
-                throw Exception("Can not get event")
-            }
+           if(listeners.isEmpty()) {
+               throw Exception("Can not get event")
+           }
             for (listener in listeners) {
-                listener.onWeightDeleted(success)
+                listener.onWeightSaved(newKey)
             }
         }
     }

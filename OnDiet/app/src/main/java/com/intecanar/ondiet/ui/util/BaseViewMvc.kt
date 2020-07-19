@@ -16,6 +16,7 @@ abstract class BaseViewMvc<LISTENER> : BaseObservable<LISTENER>(), ViewMvc {
 
     private lateinit var mRootView: View
     private val weightPattern = Pattern.compile("^[1-9][0-9]{0,2}(\\.[0-9]{0,2})?")
+    private val volumePattern = Pattern.compile("^[1-9][0-9]{0,2}(\\.[0-9]{0,2})?")
 
     protected fun setRootView(rootView: View) {
         mRootView = rootView
@@ -30,7 +31,7 @@ abstract class BaseViewMvc<LISTENER> : BaseObservable<LISTENER>(), ViewMvc {
     }
 
     protected fun getColor(@ColorRes colorId: Int): Int {
-        return mRootView.context.resources.getColor(colorId)
+        return mRootView.context.resources.getColor(colorId, null)
     }
 
     protected fun getString(@StringRes stringId: Int): String {
@@ -40,6 +41,8 @@ abstract class BaseViewMvc<LISTENER> : BaseObservable<LISTENER>(), ViewMvc {
     protected fun String.isValidWeight(): Boolean
             = this.isNotEmpty() && weightPattern.matcher(this).matches()
 
+    protected fun String.isValidVolume(): Boolean
+            = this.isNotEmpty() && volumePattern.matcher(this).matches()
 
     protected fun openDateTimePicker(offsetDateTime: OffsetDateTime, callback : ((OffsetDateTime) -> Unit)) {
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->

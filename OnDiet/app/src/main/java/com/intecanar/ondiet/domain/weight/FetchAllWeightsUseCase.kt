@@ -1,4 +1,4 @@
-package com.intecanar.ondiet.domain
+package com.intecanar.ondiet.domain.weight
 
 import com.intecanar.ondiet.data.database.entities.Weight
 import com.intecanar.ondiet.ui.util.BaseObservable

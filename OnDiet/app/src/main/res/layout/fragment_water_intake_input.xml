@@ -27,7 +27,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/made_dillan"
-            android:text="@string/weight_input_label"
+            android:text="@string/water_input_label"
             android:textAppearance="?android:attr/textAppearanceLarge"
 
             android:textColor="@color/colorPrimary"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="20dp"
-            android:text="@string/weighing_date"
+            android:text="@string/water_date"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorRedLight"
             android:textSize="13sp"
@@ -148,7 +148,7 @@
 
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
-            android:text="@string/add_weight_data"
+            android:text="@string/add_water_data"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline"

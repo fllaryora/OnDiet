@@ -1,21 +1,25 @@
 package com.intecanar.ondiet.data.database.dao
 
+import com.intecanar.ondiet.data.converter.TimeConverter
 import com.intecanar.ondiet.data.database.ObjectBox
-import com.intecanar.ondiet.data.database.entities.Weight
-import com.intecanar.ondiet.data.database.entities.Weight_
+import com.intecanar.ondiet.data.database.entities.Water
+import com.intecanar.ondiet.data.database.entities.Water_
 import io.objectbox.query.Query
 import io.objectbox.query.QueryBuilder
+import java.time.OffsetDateTime
 
 /**
  * This class is absolutely Framework dependent.
  * DAO for objectbox
  */
-object WeightDAO {
+object WaterDAO {
 
-    private val weightBox = ObjectBox.boxStore.boxFor(Weight::class.java)
+    private val waterBox = ObjectBox.boxStore.boxFor(Water::class.java)
 
-    private val weightQuery: Query<Weight>
-            = weightBox.query().order(Weight_.date, QueryBuilder.CASE_SENSITIVE ).build()
+    private val waterQuery: Query<Water>
+            = waterBox.query()
+            .startsWith(Water_.date,"").parameterAlias("today")
+            .order(Water_.date, QueryBuilder.CASE_SENSITIVE ).build()
 
     /**
      * Puts the given object in the box (aka persisting it). If this is a new entity (its ID property is 0), a new ID
@@ -25,25 +29,26 @@ object WeightDAO {
      * Performance note: if you want to put several entities, consider {@link #put(Collection)},
      * {@link #put(Object[])}, {@link BoxStore#runInTx(Runnable)}, etc. instead.
      */
-    fun insert(weight: Weight) : Long {
+    fun insert(water: Water) : Long {
         //return the new key
-        return weightBox.put(weight)
+        return waterBox.put(water)
     }
 
     /**
      * Removes (deletes) the given Object.
      * @return true if an entity was actually removed (false if no entity exists with the given ID)
      */
-    fun delete(weight: Weight) : Boolean{
-        return weightBox.remove(weight)
+    fun delete(water: Water) : Boolean{
+        return waterBox.remove(water)
     }
 
     // in case of asyncronous call
     // Example from https://github.com/timediv/QuickDynalist/blob/master/app/src/main/java/com/louiskirsch/quickdynalist/BaseItemListFragment.kt
 
-    //SQL equivalent  "select * from weight_table ORDER BY date ASC")
-    fun getWeights():  MutableList<Weight> {
-       return weightQuery.find()
+    //SQL equivalent  "select * from water_table where date(date) = date('now')")
+    fun getWaterIntakes(): MutableList<Water> {
+        val today :String = TimeConverter.fromOffsetDate(OffsetDateTime.now())!!
+        return waterQuery.setParameter("today",today).find()
     }
 
 }

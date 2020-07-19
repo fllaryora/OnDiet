@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.navigation.fragment.findNavController
 import com.intecanar.ondiet.data.database.entities.Weight
-import com.intecanar.ondiet.domain.DeleteWeightUseCase
-import com.intecanar.ondiet.domain.FetchAllWeightsUseCase
+import com.intecanar.ondiet.domain.weight.DeleteWeightUseCase
+import com.intecanar.ondiet.domain.weight.FetchAllWeightsUseCase
 import com.intecanar.ondiet.ui.util.BaseFragment
 import com.intecanar.ondiet.ui.util.ViewMvcFactory
 
@@ -63,11 +63,8 @@ class WeightFragment : BaseFragment(), WeightViewMvc.Listener,
      */
 
     override fun onWeightDeleted(success: Boolean) {
-        if(success) {
-            Toast.makeText(context,"Se elimino con exito", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(context,"No Se elimino", Toast.LENGTH_LONG).show()
-        }
+        val message : String = mViewMVC.getDeleteMessage(success)
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
         // refresh
         mFetchAllWeightsUseCase.fetchAllWeights()
     }

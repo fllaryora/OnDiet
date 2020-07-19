@@ -16,17 +16,30 @@
     <string name="menu_sub_title_water">Registration of the water.</string>
     <string name="menu_sub_title_pill">Pill\'s reminder</string>
 
-    <string name="weight_timeline_label">%s Kg</string>
+    <!-- All secctions -->
+    <string name="cancel">Cancel</string>
+    <string name="change_date">Change Date</string>
 
+    <!-- weight -->
+    <string name="weight_timeline_label">%s Kg</string>
     <string name="menu_weight_input">Weight Input</string>
     <string name="empty_time_line_label">There is no weighting information to show.</string>
-
     <string name="weight_input_label">Please enter your weight:</string>
+    <string name="valid_weight_required">Valid weight required</string>
     <string name="weighing_date">Weighing date:</string>
-    <string name="change_date">Change Date</string>
     <string name="add_weight_data">Add weight data</string>
-    <string name="cancel">Cancel</string>
-    <string name="valid_weight_required">Valid weigth required</string>
-    <string name="water_timeline_label">%s l</string>
+    <string name="delete_weight_error">Can not delete the weight</string>
+    <string name="delete_weight_successful">The weight was deleted.</string>
+
+    <!-- water -->
+    <string name="water_timeline_label">%s ml</string>
+    <string name="menu_water_intake_input">Water Intake</string>
+    <string name="empty_water_time_line_label">There is no watering intake information to show.</string>
+    <string name="water_input_label">Please enter the volume of your intake:</string>
+    <string name="valid_water_required">Valid volume required</string>
+    <string name="water_date">Intake date:</string>
+    <string name="add_water_data">Add intake data</string>
+    <string name="delete_water_error">Can not delete the intake information</string>
+    <string name="delete_water_successful">The intake information was deleted.</string>
 
 </resources>

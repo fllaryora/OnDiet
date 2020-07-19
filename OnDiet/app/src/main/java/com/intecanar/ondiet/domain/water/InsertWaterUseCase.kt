@@ -1,23 +1,23 @@
-package com.intecanar.ondiet.domain
+package com.intecanar.ondiet.domain.water
 
-import com.intecanar.ondiet.data.database.entities.Weight
+import com.intecanar.ondiet.data.database.entities.Water
 import com.intecanar.ondiet.ui.util.BaseObservable
 import com.techyourchance.threadposter.BackgroundThreadPoster
 import com.techyourchance.threadposter.UiThreadPoster
 
-class InsertWeightUseCase (
+class InsertWaterUseCase (
 private val mUiThreadPoster: UiThreadPoster,
 private val mBackgroundThreadPoster: BackgroundThreadPoster,
-private val mFetchWeightsUseCaseSync: FetchWeightsUseCaseSync
-) : BaseObservable<InsertWeightUseCase.Listener>() {
+private val mFetchWaterUseCaseSync: FetchWaterUseCaseSync
+) : BaseObservable<InsertWaterUseCase.Listener>() {
 
     interface Listener {
-        fun onWeightSaved(newKey : Long)
+        fun onWaterSaved(newKey : Long)
     }
 
-    fun insertWeight(weight: Weight) {
+    fun insertWaterIntake(water: Water) {
         mBackgroundThreadPoster.post {
-            notifySuccess(mFetchWeightsUseCaseSync.insert(weight) )
+            notifySuccess(mFetchWaterUseCaseSync.insert(water) )
         }
     }
 
@@ -27,7 +27,7 @@ private val mFetchWeightsUseCaseSync: FetchWeightsUseCaseSync
                throw Exception("Can not get event")
            }
             for (listener in listeners) {
-                listener.onWeightSaved(newKey)
+                listener.onWaterSaved(newKey)
             }
         }
     }

@@ -55,7 +55,7 @@ class HomeFragment : BaseFragment() {
                         findNavController().navigate(R.id.nav_weighing)
                     }
                     resources.getString(R.string.menu_water_intake) -> {
-                        //findNavController().navigate(R.id.nav_water_intake)
+                        findNavController().navigate(R.id.nav_water_intake)
                     }
                     resources.getString(R.string.menu_pill_remainder) -> {
                         //findNavController().navigate(R.id.nav_pill_remainder)

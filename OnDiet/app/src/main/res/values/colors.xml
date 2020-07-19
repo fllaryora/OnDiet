@@ -9,7 +9,7 @@
     <color name="colorBlue">#1a62c2</color>
     <color name="colorAccent">#c25e1a</color>
     <color name="colorGray">#6e6e6e</color>
-    <!-- android - black  -->
+
 
     <!-- tint shade variation list  -->
     <color name="colorRedDarker">#68140e</color>
@@ -17,18 +17,10 @@
     <color name="colorRedLight">#e3392c</color>
     <color name="colorRedLighter">#e96359</color>
 
-
     <!-- color analogous list  -->
     <color name="colorPink">#e96359</color>
     <color name="colorFuchsia">#c21a46</color>
 
-
     <color name="colorCard">#FFEBEE</color>
 
-    <!-- TODO use a selector in future:
-     https://github.com/material-components/material-components-android/issues/593
-      -->
-    <!-- Color for the text field's default box stroke:  -->
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#c2261a</color>
-    <color name="mtrl_textinput_filled_box_default_background_color" tools:override="true">#FFFFFF</color>
 </resources>
